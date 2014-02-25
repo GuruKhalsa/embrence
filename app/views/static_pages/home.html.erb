@@ -1,0 +1,23 @@
+<div class="center hero-unit">
+	<h1>Welcome to Embrence</h1>
+
+	<h2>
+	Honoring those who have passed before us
+	</h2>
+
+	<h2><%= link_to "Sign up", signup_path, class: "btn btn-large btn-primary" %> To add a loved one</h2>
+</div>
+<div class="center">
+<% @heroes.shuffle.each do |hero| %>
+		
+		<span class="wrapper">
+			<span class="heroes-listings">
+				<%= link_to image_tag(hero.image.url(:list).to_s, :class => "hero-listing" ), hero_path(hero) %>
+				<!--<span><%= render hero %></span>-->
+			</span>
+			<span class="heroes-hover" >
+				<%= hero.name %>
+			</span>
+		</span>
+		<% end %>
+	</div>

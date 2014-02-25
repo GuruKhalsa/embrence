@@ -1,0 +1,132 @@
+<% provide(:title, @user.name) %>
+
+<link rel="stylesheet" href="http://blueimp.github.io/Gallery/css/blueimp-gallery.min.css">
+<link rel="stylesheet" href="css/bootstrap-image-gallery.min.css">
+
+<div class="row">
+	<aside class="col-md-3 user-aside">
+		<section>
+				<% if current_user?(@user) %>
+					<%= link_to image_tag(@user.image.url(:portrait).to_s, :class => "user-portrait", :title => "Change your Profile"), edit_user_path %>
+				<% else %>
+					<%= image_tag(@user.image.url(:portrait).to_s, :class => "user-portrait") %>
+				<% end %>
+				
+			<h1 class="user-name"><%= @user.name %></h1>
+		</section>
+		<div class="">
+			<% if @user.posts.any? %>
+				<h3>Posts (<%= @user.posts.count%>)</h3>
+					<ol class="posts">
+						<% @posts.each do |post| %>
+						<li>
+							<span class="post-content"><%= simple_format(post.post) %>
+
+							<% if signed_in? && post.user_id == current_user.id %>
+										
+								<%=link_to "x", post_path(post.id, :msg_user => @user.id), :method => :delete, :class => "post-top-right", :confirm => "Are you sure you want to delete this message?"%>
+							<% end %>
+							</span>
+							<span class="timestamp">
+								<%= time_ago_in_words(post.created_at)%> ago
+								<span class="post-name"><%= post.name if post.name %></span>
+								<span class="post-user">to <%= link_to Hero.find(post.hero_id).first_name, hero_path(post.hero_id) if post.user_id %></span>
+							</span>
+							<span><%# @user.name %></span>
+						</li>
+						<% end %>
+					</ol>
+					<%= will_paginate @posts, :page_links => false %>
+				<%= will_paginate @posts %>
+			<% end %>
+		</div>
+	</aside>
+
+	<div class="col-md-9 ">
+		<div class="center">
+			
+			<% @heroes.shuffle.each do |hero| %>
+				<span class="wrapper">
+				<span class="heroes-listings">
+					<%= link_to image_tag(hero.image.url(:list).to_s, :class => "hero-listing" ), hero_path(hero) %>
+					<!--<span><%= render hero %></span>-->
+				</span>
+				<span class="heroes-hover" >
+					<%= hero.name %>
+				</span>
+			</span>
+			<% end %>
+		</div>
+	</div>
+
+	
+
+	<div class="col-md-5">
+		<div class="center">
+			<div id="blueimp-gallery" class="blueimp-gallery">
+			    <!-- The container for the modal slides -->
+			    <div class="slides"></div>
+			    <!-- Controls for the borderless lightbox -->
+			    <h3 class="title"></h3>
+			    <a class="prev">‹</a>
+			    <a class="next">›</a>
+			    <a class="close">×</a>
+			    <a class="play-pause"></a>
+			    <ol class="indicator"></ol>
+			    <!-- The modal dialog, which will be used to wrap the lightbox content -->
+			    <div class="modal fade">
+			        <div class="modal-dialog">
+			            <div class="modal-content">
+			                <div class="modal-header">
+			                    <button type="button" class="close" aria-hidden="true">&times;</button>
+			                    <h4 class="modal-title"></h4>
+			                </div>
+			                <div class="modal-body next"></div>
+			                <div class="modal-footer">
+			                    <button type="button" class="btn btn-default pull-left prev">
+			                        <i class="glyphicon glyphicon-chevron-left"></i>
+			                        Previous
+			                    </button>
+			                    <button type="button" class="btn btn-primary next">
+			                        Next
+			                        <i class="glyphicon glyphicon-chevron-right"></i>
+			                    </button>
+			                </div>
+			            </div>
+			        </div>
+			    </div>
+			</div>
+
+
+
+			<h3 class="user-header center">Images</h3>
+			<div id="links">
+				<% @images.shuffle.each do |img| %>
+					<a  href="<%= image_path(img.image) %>" title="<%=img.title%>" data-gallery="user_gallery"> <%= image_tag(img.image.url(:thumb), :class => "hero-image") %></a>
+				<% end %>
+			</div>
+		</div>
+	</div>
+
+	<div class="col-md-4">
+		<div class="center">
+			<h3 class="user-header center">Videos</h3>
+			<% @videos.shuffle.each do |vid| %>	
+				
+			<% id = ('a'..'z').to_a.shuffle[0,8].join %>
+					<a href="#<%= id %>" class="sublime">
+					  <%= image_tag(vid.file.url(:thumb)) %>
+					</a>
+					<video id="<%= id %>" width="640" height="360" style="display:none" data-uid="<%= id %>" preload="none">
+					  <source src=<%= vid.file.url%>  />
+					</video>
+
+			<% end %>
+		</div>
+	</div>
+	
+	
+</div>
+
+<script src="http://blueimp.github.io/Gallery/js/jquery.blueimp-gallery.min.js"></script>
+<script type="text/javascript" src="//cdn.sublimevideo.net/js/bmzruyq3.js"></script>

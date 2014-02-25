@@ -1,0 +1,40 @@
+// Place all the styles related to the Users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.user-header{
+	padding-bottom: 0px;
+}
+
+.user-aside{
+	padding-right: 10px;
+	padding-left: 0px;
+}
+
+.user-portrait{
+	display: block;
+    margin-left: auto;
+    margin-right: auto;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+}
+
+.user-name {
+	text-align:center;
+}
+
+#user_first_name {
+
+	width: 49%;
+}
+
+#user_last_name {
+	width: 49%;
+}
+
+.user-heroes {
+	display: block;
+    margin-left: auto;
+    margin-right: auto;
+}

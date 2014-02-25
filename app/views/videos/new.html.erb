@@ -1,0 +1,18 @@
+<% provide(:title, 'New Video') %>
+<h1>New Video</h1>
+
+<div class="row">
+	<div class="col-md-6 col-md-offset-3">
+		<%= form_for @video, :html => {:multipart => true} do |f| %>
+
+			<%= f.label :title %>
+			<%= f.text_field :title %>
+
+			<%= f.file_field :file, :onchange =>"validateVideos(this);", :data => { :max_file_size => 50.megabytes } %>
+
+			<%= f.hidden_field :hero_id, :value => params[:video_hero] %>
+
+			<%= f.submit "share new video", class: "btn btn-large btn-primary" %>
+		<% end %>
+	</div>
+</div>

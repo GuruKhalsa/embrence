@@ -1,0 +1,116 @@
+
+
+<% provide(:title, @hero.name) %>
+
+
+<link rel="stylesheet" href="http://blueimp.github.io/Gallery/css/blueimp-gallery.min.css">
+<link rel="stylesheet" href="css/bootstrap-image-gallery.min.css">
+
+
+
+
+
+<div class="row">
+
+	<div class="col-md-12 hero-background">
+		<%= image_tag(@hero.image.url(:portrait).to_s, :class => "portrait" ) %>
+		
+		<h1 class="center" <% if hero_admin? %>style="padding-left:40px"<% end %> ><%= @hero.name %> 
+			<% if hero_admin? %>
+				<span>( <%= link_to "Edit", edit_hero_path %> )</span>
+			<% end %>
+		</h1>
+
+		<% l = ([*1..95] - [*38..60]) %>
+		
+		<% @postings.each do |post| %>
+			<% s = rand(20..50) %>
+			<% p = post.id.to_s %>
+	
+			<%= link_to image_tag("circle_icon.png", alt: "circle", :size => "#{s}x#{s}", :style =>"z-index: #{ rand(0..4)}; position: absolute; left: #{l.sample}%; top: #{ rand(28..280) }px;", :class => "bubble", :data => { :toggle => "modal", :target => "#" + p} ) %>
+			
+
+			<div class="modal fade" id="<%= p %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			  <div class="modal-dialog">
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+			        <h4 class="modal-title" id="myModalLabel">Message</h4>
+			      </div>
+			      <div class="modal-body">
+			        <%= post.post %>
+			      </div>
+			      <div class="modal-footer">
+			        <button type="button" class="btn btn-primary btn-xs" data-dismiss="modal">Done</button>
+			        
+			      </div>
+			    </div><!-- /.modal-content -->
+			  </div><!-- /.modal-dialog -->
+			</div><!-- /.modal -->
+		<% end %>
+
+		<% @images.shuffle.each do |img| %>
+			
+			<% s = rand(20..50) %>
+			
+			<a href="<%= image_path(img.image) %>" title="<%=img.title%>" data-gallery="test2"> <%= image_tag("blue_circle_icon.png", alt: "circle", :size => "#{s}x#{s}", :style =>"z-index: #{ rand(0..4)}; position: absolute; left: #{l.sample}%; top: #{ rand(28..280) }px;",:class => "bubble") %></a>
+	
+		<% end %>
+
+		<% @videos.shuffle.each do |vid| %>	
+			
+			<% s = rand(20..50) %>
+			<% id = ('a'..'z').to_a.shuffle[0,8].join %>
+
+			<a href="#<%= id %>" class="sublime">
+			  <%= image_tag("red_circle_icon.png", alt: "circle", :size => "#{s}x#{s}", :style =>"z-index: #{ rand(0..4)}; position: absolute; left: #{l.sample}%; top: #{ rand(28..280) }px;",:class => "bubble") %>
+			</a>
+			<video id="<%= id %>" width="640" height="360" style="display:none" data-uid="<%= id %>" preload="none">
+			  <source src=<%= vid.file.url%>  />
+			</video>
+
+		<% end %>
+
+	</div>
+
+	<div class="col-md-3">
+
+		<div id="ajax_images"> <%= render 'images' %></div>
+
+		<div id="ajax_videos"> <%= render 'videos' %></div>
+		
+	</div>
+
+	<div class="col-md-6">			
+		<div>
+			<p><%= simple_format(@hero.synopsis) %></p>
+			<p><%= simple_format(@hero.story) %></p>
+		</div>
+		<br/>
+	</div>
+
+	<div class="col-md-3">
+
+		<div id="ajax_messages"><%= render 'messages' %></div>
+
+	</div>
+</div>
+
+
+
+
+
+
+<!--<script type="text/javascript">
+	jQuery(function() {
+	  jQuery(".fancybox").fancybox({
+	  		'cyclic': true,
+	  		'showCloseButton' : false,
+	  		'padding': 0,
+	  		'titleShow': false,
+	  		'titlePosition': 'over',
+	  		'overlayColor': '#000',
+	  		'overlayOpacity': 0.9
+	  	});
+	});
+</script>-->

@@ -1,0 +1,18 @@
+<% provide(:title, 'New Image') %>
+<h1>New Image</h1>
+
+<div class="row">
+	<div class="col-md-6 col-md-offset-3">
+		<%= form_for @image, :html => {:multipart => true} do |f| %>
+
+			<%= f.label :title %>
+			<%= f.text_field :title %>
+
+			<%= f.file_field :image, :onchange =>"validateFiles(this);", :data => { :max_file_size => 5.megabytes } %>
+
+			<%= f.hidden_field :hero_id, :value => params[:image_hero] %>
+
+			<%= f.submit "share new image", class: "btn btn-large btn-primary" %>
+		<% end %>
+	</div>
+</div>

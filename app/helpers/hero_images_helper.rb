@@ -1,0 +1,2 @@
+module HeroImagesHelper
+end
