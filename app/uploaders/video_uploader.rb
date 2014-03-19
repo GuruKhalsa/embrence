@@ -2,7 +2,6 @@
 require 'carrierwave/processing/mime_types'
 
 class VideoUploader < CarrierWave::Uploader::Base
-  
 
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
@@ -52,31 +51,20 @@ class VideoUploader < CarrierWave::Uploader::Base
   
 
     process encode_video: [:mp4]
-    #process :encoding_video
-    #process :set_content_type
+    process :set_content_type
   #end
 
   version :thumb do
-     #process :encoding_video
-     thumbnail: [{format: 'png', quality: 10, size: 105, logger: Rails.logger}]
+    process thumbnail: [{format: 'png', quality: 10, size: 105, logger: Rails.logger}]
 
     def full_filename for_file
       png_name for_file, version_name
     end
   end
 
-  # version :thumb, from_version: :thumbnailing do 
-  #   process :resize_to_fill => [105, 59, gravity = 'Center']
-  # end
-
     def png_name for_file, version_name
       %Q{#{version_name}_#{for_file.chomp(File.extname(for_file))}.png}
     end
-
-  def video_transcoding
-    movie = FFMPEG::Movie.new(File)
-    movie.transcode("tmp.mp4", " -y -i -vcodec libx264 -acodec libfaac -s 640x480  -qscale 0 -preset slow -g 30 -aspect 1.3333333333333333") 
-  end
 
  
 
