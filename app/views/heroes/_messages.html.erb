@@ -2,7 +2,7 @@
 	<h3>Messages (<%= @hero.posts.count%>)</h3>
 	<ol class="posts">
 		<% @posts.each do |post| %>
-		<li>
+		<li class="post-item">
 			<span class="post-content"><%= simple_format(post.post) %>
 
 			<% if hero_admin? || signed_in? && post.user_id == current_user.id %>

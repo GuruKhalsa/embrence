@@ -68,7 +68,7 @@
 
 	<div id="links">
 		<% @all_images.each do |img| %>
-        <span class="corner_wrapper">
+        <span class="image_wrapper">
 		<a class="gallery" href="<%= image_path(img.image)%>" title="<%=img.title%>" rel="hero_gallery" data-gallery="test"> <%= image_tag(img.image.url(:thumb), :class => "hero-image") %></a>
             <% if hero_admin? %>
                 

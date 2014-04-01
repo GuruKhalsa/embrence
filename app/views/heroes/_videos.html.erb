@@ -11,13 +11,13 @@
 			<%= "Uploading..." %>
 		<% else %>
 			<span class="corner_wrapper">
-			<a href="#<%= id %>" class="sublime">
-			  <%= image_tag(vid.file.url(:thumb), :class => "video-thumb") %>
-			</a>
-			<% if hero_admin? %>
-				
-				<%=link_to "x",video_path(vid.id, :video_hero => @hero.id), :method => :delete, :class => "top-right", :confirm => "Are you sure you want to delete this video?"%>
-			<% end %>
+					<a href="#<%= id %>" class="sublime">
+					  <%= image_tag(vid.file.url(:thumb), :class => "video-thumb") %>
+					</a>
+					<% if hero_admin? %>
+						
+						<%=link_to "x",video_path(vid.id, :video_hero => @hero.id), :method => :delete, :class => "top-right", :confirm => "Are you sure you want to delete this video?"%>
+					<% end %>
 			</span>
 			<video id="<%= id %>" width="640" height="360" style="display:none" data-uid="<%= id %>" preload="none">
 			  <source src=<%= vid.file.url%>  />
