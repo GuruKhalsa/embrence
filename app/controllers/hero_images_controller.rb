@@ -24,10 +24,16 @@ class HeroImagesController < ApplicationController
 	end
 
 	def destroy
-		@hero = Hero.find(params[:img_hero])
-		HeroImage.find(params[:id]).destroy
-	    flash[:success] = "Image deleted."
-	    redirect_to @hero
+		@image = HeroImage.find(params[:id])
+		@image.destroy
+		flash[:success] = "Image deleted."
+		if params.has_key?(:img_hero)
+			@hero = Hero.find(@image.hero_id)
+			redirect_to @hero
+		else 
+	    	@user = User.find(@image.user_id)
+	    	redirect_to @user
+	    end
 	end
 
 end

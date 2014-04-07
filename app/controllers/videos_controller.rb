@@ -17,10 +17,16 @@ class VideosController < ApplicationController
 	end
 
 	def destroy
-		@hero = Hero.find(params[:video_hero])
-		Video.find(params[:id]).destroy
+		@video = Video.find(params[:id])
+		@video.destroy
 	    flash[:success] = "Video deleted."
-	    redirect_to @hero
+	    if params.has_key?(:video_hero)
+	    	@hero = Hero.find(@video.hero_id)
+	    	redirect_to @hero
+	    else 
+	    	@user = User.find(@video.user_id)
+	    	redirect_to @user
+	    end
 	end
 
 end
