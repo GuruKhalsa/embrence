@@ -15,7 +15,7 @@ HerosWall4::Application.routes.draw do
   root :to => 'static_pages#home'
 
   get '/faq',      to: 'static_pages#faq'
-  get '/contact',  to: 'static_pages#contact'
+  get '/about',  to: 'static_pages#about'
 
   get '/signup',  to: 'users#new'
   get '/signin',  to: 'sessions#new'
