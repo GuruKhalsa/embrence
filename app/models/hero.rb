@@ -3,21 +3,26 @@
 # Table name: heroes
 #
 #  id         :integer          not null, primary key
+#  first_name :string(255)
+#  last_name  :string(255)
+#  city       :string(255)
+#  state      :string(255)
 #  name       :string(255)
 #  synopsis   :text
 #  story      :text
-#  created_at :datetime
-#  updated_at :datetime
-#  image      :string(255)
-#  user_id    :integer
 #  birthdate  :date
 #  deathdate  :date
+#  image      :string(255)
+#  user_id    :integer
+#  created_at :datetime
+#  updated_at :datetime
+#  image_tmp  :string(255)
 #
 
 class Hero < ActiveRecord::Base
 	attr_accessible :name, :first_name, :last_name, :city, :state, :synopsis, :story, :image, :birthdate, :deathdate
 	mount_uploader :image, PortraitUploader
-	#process_in_background :image
+	store_in_background :image
 
 	belongs_to :user
 	has_many :posts

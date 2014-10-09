@@ -5,16 +5,17 @@
 #  id         :integer          not null, primary key
 #  title      :string(255)
 #  image      :string(255)
+#  user_id    :integer
+#  hero_id    :integer
 #  created_at :datetime
 #  updated_at :datetime
-#  hero_id    :integer
-#  user_id    :integer
+#  image_tmp  :string(255)
 #
 
 class HeroImage < ActiveRecord::Base
   attr_accessible :title, :image, :hero_id
   mount_uploader :image, HeroUploader
-  #process_in_background :image
+  store_in_background :image
 
   belongs_to :hero
   belongs_to :user

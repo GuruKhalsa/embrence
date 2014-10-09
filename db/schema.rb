@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131222021223) do
+ActiveRecord::Schema.define(version: 20141009032104) do
 
   create_table "hero_images", force: true do |t|
     t.string   "title"
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 20131222021223) do
     t.integer  "hero_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "image_tmp"
   end
 
   add_index "hero_images", ["user_id", "hero_id"], name: "index_hero_images_on_user_id_and_hero_id", using: :btree
@@ -38,6 +39,7 @@ ActiveRecord::Schema.define(version: 20131222021223) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "image_tmp"
   end
 
   add_index "heroes", ["name", "user_id"], name: "index_heroes_on_name_and_user_id", using: :btree
@@ -64,6 +66,7 @@ ActiveRecord::Schema.define(version: 20131222021223) do
     t.boolean  "admin",           default: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "image_tmp"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
@@ -76,6 +79,7 @@ ActiveRecord::Schema.define(version: 20131222021223) do
     t.integer  "hero_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "file_tmp"
   end
 
   add_index "videos", ["user_id", "hero_id"], name: "index_videos_on_user_id_and_hero_id", using: :btree

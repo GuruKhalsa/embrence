@@ -3,19 +3,23 @@
 # Table name: users
 #
 #  id              :integer          not null, primary key
+#  first_name      :string(255)
+#  last_name       :string(255)
 #  name            :string(255)
 #  email           :string(255)
-#  created_at      :datetime
-#  updated_at      :datetime
+#  image           :string(255)
 #  password_digest :string(255)
 #  remember_token  :string(255)
 #  admin           :boolean          default(FALSE)
-#  image           :string(255)
+#  created_at      :datetime
+#  updated_at      :datetime
+#  image_tmp       :string(255)
 #
 
 class User < ActiveRecord::Base
   attr_accessible :email, :first_name, :last_name, :name, :image, :password, :password_confirmation
   mount_uploader :image, UserUploader
+  store_in_background :image
   has_secure_password
 
   has_many :posts, dependent: :destroy

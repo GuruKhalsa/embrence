@@ -68,15 +68,23 @@
 
 	<div id="links">
 		<% @all_images.each do |img| %>
-        <span class="image_wrapper">
-		<a class="gallery" href="<%= image_path(img.image)%>" title="<%=img.title%>" rel="hero_gallery" data-gallery="test"> <%= image_tag(img.image.url(:thumb), :class => "hero-image") %></a>
-            <% if hero_admin? %>
-                
-                <%=link_to "x", hero_image_path(img.id, :img_hero => @hero.id), :method => :delete, :class => "img-top-right", :confirm => "Are you sure you want to delete this image?"%>
-            <% end %>
-        </span>
-		<% end %>
-		<%= will_paginate @all_images, :param_name => 'image_page', :page_links => false %>
+          <% if img.image.url(:thumb).nil? %>
+            <span class="image_wrapper uploading-container">
+                <p class="uploading-photo-gif">
+                    <%= image_tag("rect-ajax-loader.gif", :class => 'uploading-photo-gif') %>
+                <!-- </p> -->
+            </span>
+          <% else %>
+            <span class="image_wrapper">
+    		<a class="gallery" href="<%= image_path(img.image)%>" title="<%=img.title%>" rel="hero_gallery" data-gallery="test"> <%= image_tag(img.image.url(:thumb), :class => "hero-image") %></a>
+                <% if hero_admin? %>
+                    
+                    <%=link_to "x", hero_image_path(img.id, :img_hero => @hero.id), :method => :delete, :class => "img-top-right", :confirm => "Are you sure you want to delete this image?"%>
+                <% end %>
+            </span>
+    		<% end %>
+    		<%= will_paginate @all_images, :param_name => 'image_page', :page_links => false %>
+          <% end %>
 	</div>
 
 </div>

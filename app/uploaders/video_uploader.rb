@@ -9,7 +9,7 @@ class VideoUploader < CarrierWave::Uploader::Base
   include CarrierWave::Video
   include CarrierWave::Video::Thumbnailer
   include CarrierWave::MimeTypes
-  #include ::CarrierWave::Backgrounder::Delay
+  include ::CarrierWave::Backgrounder::Delay
 
 
 

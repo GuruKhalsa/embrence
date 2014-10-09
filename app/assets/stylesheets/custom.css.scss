@@ -4,6 +4,7 @@
 /* mixins, variables, etc. */
 
 $grayMediumLight: #eaeaea;
+$input-border-focus: red;
 
 @mixin box_sizing {
 	-moz-box-sizing: border-box;
@@ -13,7 +14,6 @@ $grayMediumLight: #eaeaea;
 
 
 /* universal */
-
 
 
 html {
@@ -45,17 +45,62 @@ img {
 	vertical-align: 0;
 }
 
+a {
+	color: #028372;
+}
+
 a:hover, a:focus {
 	text-decoration: none;
 }
 
+/*.btn-primary {
+	background-color: #fcab6e;
+	border: 1px solid #fe8e39;
+	letter-spacing: 2px;
+	&:hover {
+	  background-color: #fda25d;
+		border: 1px solid #fe8e39;
+	}
+}*/
+
+.btn-primary {
+	background-color: #73ab9b;
+	border: 1px solid #028372;
+	letter-spacing: 2px;
+	&:hover {
+	  background-color: #028372;
+		border: 1px solid #028372;
+	}
+}
+
+.form-control:focus{
+    border-color: #cccccc;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+textarea:hover, 
+input:hover, 
+textarea:active, 
+input:active, 
+textarea:focus, 
+input:focus,
+button:focus,
+button:active,
+button:hover,
+{
+    outline: 0px !important;
+    -webkit-appearance:none;
+}
+
 /* Navbar */
 
-.nav{
-	z-index: -999999
+.nav{  
+	z-index: -999999;
 }
 
 .nav > li > a {
+	color: #028372;
 	padding: 0px 15px;
 	margin-top: 13px;
 }
@@ -273,4 +318,3 @@ input, textarea, select, .uneditable-input {
 .timestamp {
 	color: gray;
 }
-

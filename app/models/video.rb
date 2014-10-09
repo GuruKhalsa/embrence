@@ -5,10 +5,11 @@
 #  id         :integer          not null, primary key
 #  title      :string(255)
 #  file       :string(255)
+#  user_id    :integer
+#  hero_id    :integer
 #  created_at :datetime
 #  updated_at :datetime
-#  hero_id    :integer
-#  user_id    :integer
+#  file_tmp   :string(255)
 #
 
 class Video < ActiveRecord::Base
@@ -19,7 +20,7 @@ class Video < ActiveRecord::Base
   belongs_to :user
 
   mount_uploader :file, VideoUploader
-  #process_in_background :file
+  store_in_background :file
 
   validates :file, presence: true
   validate :file_size_validation

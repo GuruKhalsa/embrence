@@ -32,7 +32,7 @@ class UsersController < ApplicationController
 
   def show
   	@user = User.find(params[:id])
-    @hero = Hero.find(params[:id])
+    # @hero = Hero.find(params[:id])
     @heroes = @user.heroes.all
     @posts = @user.posts.paginate(page: params[:page])
     @images = @user.hero_images.all

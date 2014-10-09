@@ -8,7 +8,11 @@
 		
 		<% id = ('a'..'z').to_a.shuffle[0,8].join %>
 		<% if vid.file.url(:thumb).nil? %>
-			<%= "Uploading..." %>
+			<span class="corner_wrapper uploading-container">
+				<!-- <p class="uploading-msg"> -->
+					<%= image_tag("rect-ajax-loader.gif", :class => 'uploading-msg') %>
+				<!-- </p> -->
+			</span>
 		<% else %>
 			<span class="corner_wrapper">
 					<a href="#<%= id %>" class="sublime">
