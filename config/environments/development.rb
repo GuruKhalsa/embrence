@@ -1,3 +1,6 @@
+
+ENV['NEGATIVE_CAPTCHA_SECRET']  = '3a40d5edbcda8bfa44f1e0881ae54fd8f2aa0a1632a6cc1cb401d24169de20fdf58aef1c3678ef9bfbfd31c8ea14110f8174b72d50f6f0f8d0139e5027743aa1'
+
 HerosWall4::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 

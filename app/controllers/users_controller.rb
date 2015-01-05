@@ -10,7 +10,7 @@ class UsersController < ApplicationController
 
   def create
   	@user = User.new(params[:user])
-    @user.name = "#{@user.first_name} #{@user.last_name}"
+    @user.name = "#{@user.first_name.strip} #{@user.last_name.strip}"
   	if @user.save
       sign_in @user
   		flash[:success] = "Welcome to Emberence"
@@ -21,7 +21,7 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    User.find(params[:id]).destroy
+    User.friendly.find(params[:id]).destroy
     flash[:success] = "User destroyed."
     redirect_to users_path
   end
@@ -31,9 +31,9 @@ class UsersController < ApplicationController
   end
 
   def show
-  	@user = User.find(params[:id])
+  	@user = User.friendly.find(params[:id])
     # @hero = Hero.find(params[:id])
-    @heroes = @user.heroes.all
+    @heroes = @user.embers.all
     @posts = @user.posts.paginate(page: params[:page])
     @images = @user.hero_images.all
     @videos = @user.videos.all
@@ -43,7 +43,7 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user = User.find(params[:id])
+    @user = User.friendly.find(params[:id])
     @user.name = "#{@user.first_name} #{@user.last_name}"
     if @user.update_attributes(params[:user])
         flash[:success] = "Profile updated"
@@ -57,7 +57,7 @@ class UsersController < ApplicationController
   private
 
     def correct_user
-      @user = User.find(params[:id])
+      @user = User.friendly.find(params[:id])
       redirect_to(root_path) unless current_user?(@user)
     end
 

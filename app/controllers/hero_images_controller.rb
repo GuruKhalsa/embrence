@@ -3,11 +3,11 @@ class HeroImagesController < ApplicationController
 
 	def new
 		@image = current_user.hero_images.build
-		@hero = Hero.find(params[:image_hero])
+		@hero = Ember.find(params[:image_hero])
 	end
 
 	def create
-		@hero = Hero.find(params[:hero_image][:hero_id])
+		@hero = Ember.find(params[:hero_image][:ember_id])
 		@image = current_user.hero_images.build(params[:hero_image])
 		if @image.save
     		flash[:success] = "Image created!"
@@ -28,10 +28,10 @@ class HeroImagesController < ApplicationController
 		@image.destroy
 		flash[:success] = "Image deleted."
 		if params.has_key?(:img_hero)
-			@hero = Hero.find(@image.hero_id)
+			@hero = Ember.find(@image.ember_id)
 			redirect_to @hero
 		else 
-	    	@user = User.find(@image.user_id)
+	    	@user = Ember.find(@image.user_id)
 	    	redirect_to @user
 	    end
 	end

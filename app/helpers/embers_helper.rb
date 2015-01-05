@@ -1,0 +1,2 @@
+module EmbersHelper
+end

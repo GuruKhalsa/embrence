@@ -12,8 +12,8 @@
 		
 		<span class="wrapper">
 			<span class="heroes-listings">
-				<%= link_to image_tag(hero.image.url(:list).to_s, :class => "hero-listing" ), hero_path(hero) %>
-				<!--<span><%= render hero %></span>-->
+				<%= link_to image_tag(hero.image.url(:list).to_s, :class => "hero-listing" ), ember_path(hero) %>
+				
 			</span>
 			<span class="heroes-hover" >
 				<%= hero.name %>

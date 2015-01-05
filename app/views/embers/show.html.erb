@@ -12,20 +12,20 @@
 
 <div class="row">
 
-		<% 20.times do |background| %>
-			<% s = rand(10..50) %>
-			<% left_placement = rand(1..95) %>
-			<% top_placement = rand(40..320) %>
-			<% opacity = rand(3..9) %>
-			<% zindex = rand(-6..-9) %>
-			<% angle = rand(0...360) %>
+		<%# 20.times do |background| %>
+			<%# s = rand(10..50) %>
+			<%# left_placement = rand(1..95) %>
+			<%# top_placement = rand(40..320) %>
+			<%# opacity = rand(3..9) %>
+			<%# zindex = rand(-6..-9) %>
+			<%# angle = rand(0...360) %>
 
 			
-			<%= content_tag(:div, nil, :style => "opacity: .#{opacity}; position: absolute; left: #{left_placement}%; top: #{top_placement}px; height: #{s}px; width: #{s}px; border: solid 1px #028372; border-radius: #{s/2}px; z-index: #{zindex}; background:  -webkit-linear-gradient(#{angle}deg,rgba(2, 95, 74, .9),rgba(2, 95, 74, .7) 70%, rgba(2, 95, 74, .8));") %>
+			<%# content_tag(:div, nil, :style => "opacity: .#{opacity}; position: absolute; left: #{left_placement}%; top: #{top_placement}px; height: #{s}px; width: #{s}px; border: solid 1px #028372; border-radius: #{s/2}px; z-index: #{zindex}; background:  -webkit-linear-gradient(#{angle}deg,rgba(2, 95, 74, .9),rgba(2, 95, 74, .7) 70%, rgba(2, 95, 74, .8));") %>
 		
 			<!-- #25c189 and black -->
 			<%#= image_tag("bg_small_circle.png", alt: "circle", :size => "#{s}x#{s}", :style =>"z-index: #{ rand(0..4)}; position: absolute; left: #{left_placement}%; top: #{top_placement}px;") %>
-		<% end %>
+		<%# end %>
 
 
 
@@ -44,7 +44,7 @@
 			<% p = post.id.to_s %>
 			<% angle = rand(0...360) %>
 	
-			<%= link_to content_tag(:div, nil, :style =>"z-index: #{ rand(2..4)}; background: -webkit-linear-gradient(#{angle}deg,rgba(255,0,0,1),rgba(255,0,0,.8) 60%,rgba(255,0,0,1)); position: absolute; left: #{l.sample}%; top: #{ rand(28..280) }px; height: #{s}px; width: #{s}px; border-radius: #{s/2}px; opacity: .#{rand(3..7)}; border: solid 1px #931d10;", :class => "bubble", :data => { :toggle => "modal", :target => "#" + p} ) %>
+			<%= link_to content_tag(:div, nil, :style =>"z-index: #{ rand(2..4)}; background: -webkit-linear-gradient(#{angle}deg,rgba(2, 95, 74, .9),rgba(2, 95, 74, .7) 70%, rgba(2, 95, 74, .8)); position: absolute; left: #{l.sample}%; top: #{ rand(28..280) }px; height: #{s}px; width: #{s}px; border-radius: #{s/2}px; opacity: .#{rand(3..7)}; border: solid 1px #028372;", :class => "bubble", :data => { :toggle => "modal", :target => "#" + p} ) %>
 			
 
 			<div class="modal fade" id="<%= p %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -93,7 +93,7 @@
 		
 		<h1 class="center" <% if hero_admin? %>style="padding-left:40px"<% end %> ><%= @hero.name %> 
 			<% if hero_admin? %>
-				<span>( <%= link_to "Edit", edit_hero_path %> )</span>
+				<span>( <%= link_to "Edit", edit_ember_path %> )</span>
 			<% end %>
 		</h1>
 

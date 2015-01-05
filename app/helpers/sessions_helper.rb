@@ -44,7 +44,7 @@ module SessionsHelper
 
     def hero_admin?
     	if signed_in?
-    		current_user.id == Hero.find(params[:id]).user_id
+    		current_user.id == Ember.friendly.find(params[:id]).user_id
     	else
     		false
     	end

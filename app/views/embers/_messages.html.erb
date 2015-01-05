@@ -25,13 +25,18 @@
 
 	<div id="share_form">
 
-		<%= form_for(@post) do |f| %>
-			<% if signed_in? == false %>
-				<%= f.text_field :name, placeholder: "Your Name" %>
-			<% end %>
-			<%= f.text_area :post, placeholder: "Share about #{@hero.name}" %>
-			<%= f.hidden_field :hero_id, :value => @hero.id %>
-
-			<%= f.submit "Submit", class: "btn btn-xs btn-primary pull-right" %>
+		<%= form_tag posts_path do %>
+		  <%# The `negative_captcha` call gives us the honeypots, spinners and whatnot %>
+		  <%= raw negative_captcha(@captcha) %>
+		  	<% if signed_in? == false %>
+		    	<%= negative_text_field_tag(@captcha, :name, :placeholder => 'Your Name') %>
+		    <% end %>
+		      <%= negative_text_area_tag(@captcha, :post, placeholder: "Share about #{@hero.name}") %>
+		      <%= negative_hidden_field_tag(@captcha, :ember_id, :value => @hero.id) %>
+		      <%= submit_tag 'Submit', :class => "btn btn-xs btn-primary pull-right" %>
+		    </li>
+		  </ul>
 		<% end %>
+
+
 	</div>

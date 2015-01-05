@@ -24,10 +24,13 @@ gem 'actionpack-action_caching', '~> 1.1.1'
 gem 'activeresource', '~> 4.0.0'
 gem 'sidekiq', '~> 2.17.3'
 gem 'carrierwave_backgrounder', '~> 0.3.0'
+gem 'autoprefixer-rails'
 
 gem 'sinatra', require: false
 gem 'slim'
 gem 'newrelic_rpm'
+gem 'friendly_id', '~> 5.0.0'
+gem 'negative_captcha'
 
 group :development, :test do 
 	gem 'rspec-rails', '~> 2.14.1'

@@ -6,7 +6,7 @@
 #  title      :string(255)
 #  file       :string(255)
 #  user_id    :integer
-#  hero_id    :integer
+#  ember_id   :integer
 #  created_at :datetime
 #  updated_at :datetime
 #  file_tmp   :string(255)
@@ -15,8 +15,8 @@
 class Video < ActiveRecord::Base
 	#after_commit :resize_thumb
 
-  attr_accessible :title, :file, :hero_id
-  belongs_to :hero
+  attr_accessible :title, :file, :ember_id
+  belongs_to :ember
   belongs_to :user
 
   mount_uploader :file, VideoUploader

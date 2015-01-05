@@ -6,16 +6,17 @@
 #  name       :string(255)
 #  post       :text
 #  user_id    :integer
-#  hero_id    :integer
+#  ember_id   :integer
 #  created_at :datetime
 #  updated_at :datetime
 #
 
 class Post < ActiveRecord::Base
-  attr_accessible :post, :name, :hero_id
+  attr_accessible :post, :name, :ember_id
 
   belongs_to :user
-  belongs_to :hero
+  belongs_to :ember
 
   validates :post, presence: true
+
 end

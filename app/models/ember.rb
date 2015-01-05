@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: heroes
+# Table name: embers
 #
 #  id         :integer          not null, primary key
 #  first_name :string(255)
@@ -17,10 +17,15 @@
 #  created_at :datetime
 #  updated_at :datetime
 #  image_tmp  :string(255)
+#  slug       :string(255)
 #
 
-class Hero < ActiveRecord::Base
+class Ember < ActiveRecord::Base	
 	attr_accessible :name, :first_name, :last_name, :city, :state, :synopsis, :story, :image, :birthdate, :deathdate
+
+	extend FriendlyId
+	friendly_id :name, use: :slugged
+
 	mount_uploader :image, PortraitUploader
 	store_in_background :image
 

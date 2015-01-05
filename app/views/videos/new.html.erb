@@ -10,7 +10,7 @@
 
 			<%= f.file_field :file, :onchange =>"validateVideos(this);", :data => { :max_file_size => 50.megabytes } %>
 
-			<%= f.hidden_field :hero_id, :value => params[:video_hero] %>
+			<%= f.hidden_field :ember_id, :value => params[:video_hero] %>
 
 			<%= f.submit "share new video", class: "btn btn-large btn-primary" %>
 		<% end %>

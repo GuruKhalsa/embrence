@@ -5,7 +5,7 @@ HerosWall4::Application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   resources :users
-  resources :heroes
+  resources :embers
   resources :hero_images
   resources :videos
   resources :sessions, only: [:new, :create, :destroy]

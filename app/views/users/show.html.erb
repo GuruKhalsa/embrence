@@ -30,7 +30,7 @@
 							<span class="timestamp">
 								<%= time_ago_in_words(post.created_at)%> ago
 								<span class="post-name"><%= post.name if post.name %></span>
-								<span class="post-user">to <%= link_to Hero.find(post.hero_id).first_name, hero_path(post.hero_id) if post.user_id %></span>
+								<span class="post-user">to <%= link_to Ember.find(post.ember_id).first_name, ember_path(post.ember_id) if post.user_id %></span>
 							</span>
 							<span><%# @user.name %></span>
 						</li>
@@ -48,8 +48,8 @@
 			<% @heroes.shuffle.each do |hero| %>
 				<span class="wrapper">
 				<span class="heroes-listings">
-					<%= link_to image_tag(hero.image.url(:list).to_s, :class => "hero-listing" ), hero_path(hero) %>
-					<!--<span><%= render hero %></span>-->
+					<%= link_to image_tag(hero.image.url(:list).to_s, :class => "hero-listing" ), ember_path(hero) %>
+					
 				</span>
 				<span class="heroes-hover" >
 					<%= hero.name %>

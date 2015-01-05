@@ -16,13 +16,13 @@
   <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
    
     <ul class="nav navbar-nav navbar-right">
-    	<%= form_tag heroes_path, :class => 'navbar-form navbar-left', :role => "search", :method => 'get' do %>
+    	<%= form_tag embers_path, :class => 'navbar-form navbar-left', :role => "search", :method => 'get' do %>
 			  <div class="form-group">
-			    <%= text_field_tag :search, params[:search], :placeholder => 'search heroes', :class => 'search-query form-control', :id => 'nav-search' %>			
+			    <%= text_field_tag :search, params[:search], :placeholder => 'Search Embers', :class => 'search-query form-control', :id => 'nav-search' %>			
 			  </div>		
 		<% end %>
       <li><%= link_to "Home", root_path %></li>
-					<li><%= link_to "Heroes", heroes_path %></li>
+					<li><%= link_to "Embers", embers_path %></li>
 					<% if signed_in? %>
 						<li><%= link_to "Users", users_path %></li>
 						<li id="fat-menu" class="dropdown">

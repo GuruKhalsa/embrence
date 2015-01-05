@@ -14,16 +14,21 @@
 #  created_at      :datetime
 #  updated_at      :datetime
 #  image_tmp       :string(255)
+#  slug            :string(255)
 #
 
 class User < ActiveRecord::Base
   attr_accessible :email, :first_name, :last_name, :name, :image, :password, :password_confirmation
+
+  extend FriendlyId
+  friendly_id :name, use: :slugged
+
   mount_uploader :image, UserUploader
   store_in_background :image
   has_secure_password
 
   has_many :posts, dependent: :destroy
-  has_many :heroes
+  has_many :embers
   has_many :hero_images
   has_many :videos
 

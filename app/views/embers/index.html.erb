@@ -1,19 +1,18 @@
 <% provide(:title, 'All heroes') %>
-<h1>Heroes<span class="new-hero"><%= link_to "Add New Hero", new_hero_path, class: "btn btn-large btn-primary hero-button" %>
+<h1>Embers<span class="new-hero"><%= link_to "New Ember", new_ember_path, class: "btn btn-large btn-primary hero-button" %>
 </span></h1>
 
 <div class="center">
 <% if @heroes.count > 0 %>
 
-	<%= will_paginate %>
+	<%= will_paginate @heroes %>
 
 
 		<% @heroes.shuffle.each do |hero| %>
 		
 		<span class="wrapper">
 			<span class="heroes-listings">
-				<%= link_to image_tag(hero.image.url(:list).to_s, :class => "hero-listing" ), hero_path(hero) %>
-				<!--<span><%= render hero %></span>-->
+				<%= link_to image_tag(hero.image.url(:list).to_s, :class => "hero-listing" ), ember_path(hero) %>
 			</span>
 			<span class="heroes-hover" >
 				<%= hero.name %>
@@ -24,7 +23,7 @@
 	
 
 	
-	<%= will_paginate %>
+	<%= will_paginate @heroes %>
 
 <% else %>
 

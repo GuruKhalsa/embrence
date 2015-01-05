@@ -10,7 +10,7 @@
 
 			<%= f.file_field :image, :onchange =>"validateFiles(this);", :data => { :max_file_size => 5.megabytes } %>
 
-			<%= f.hidden_field :hero_id, :value => params[:image_hero] %>
+			<%= f.hidden_field :ember_id, :value => params[:image_hero] %>
 
 			<%= f.submit "share new image", class: "btn btn-large btn-primary" %>
 		<% end %>

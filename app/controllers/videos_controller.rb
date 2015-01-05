@@ -6,7 +6,7 @@ class VideosController < ApplicationController
 	end
 
 	def create
-		@hero = Hero.find(params[:video][:hero_id])
+		@hero = Ember.find(params[:video][:ember_id])
 		@video = current_user.videos.build(params[:video])
 		if @video.save
 			flash[:success] = "Video created!"
@@ -21,7 +21,7 @@ class VideosController < ApplicationController
 		@video.destroy
 	    flash[:success] = "Video deleted."
 	    if params.has_key?(:video_hero)
-	    	@hero = Hero.find(@video.hero_id)
+	    	@hero = Ember.find(@video.ember_id)
 	    	redirect_to @hero
 	    else 
 	    	@user = User.find(@video.user_id)
