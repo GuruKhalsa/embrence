@@ -31,6 +31,7 @@ gem 'slim'
 gem 'newrelic_rpm'
 gem 'friendly_id', '~> 5.0.0'
 gem 'negative_captcha'
+gem 'jquery-turbolinks'
 
 group :development, :test do 
 	gem 'rspec-rails', '~> 2.14.1'
