@@ -45,7 +45,7 @@ class EmbersController < ApplicationController
 		@hero = Ember.friendly.find(params[:id])
 		@hero.name = "#{@hero.first_name} #{@hero.last_name}"
 		if @hero.update_attributes(params[:ember])
-        flash[:success] = "Hero updated"
+        flash[:success] = "Ember updated"
         redirect_to @hero
     else
       render 'edit'
@@ -54,7 +54,7 @@ class EmbersController < ApplicationController
 
 	def destroy
 		Ember.friendly.find(params[:id]).destroy
-	    flash[:success] = "Hero destroyed."
+	    flash[:success] = "Ember destroyed."
 	    redirect_to embers_path
 	end
 

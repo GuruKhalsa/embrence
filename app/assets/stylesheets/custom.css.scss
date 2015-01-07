@@ -310,9 +310,27 @@ input, textarea, select, .uneditable-input {
 	}
 }
 
-.post-content {
-	display: block;
+.post-item{
 	position: relative;
+}
+
+.post-content {
+	display: inline;
+	position: relative;
+	overflow: hidden;
+
+	p{
+		height: 102px;
+		overflow: hidden;
+	}
+}
+
+
+.read-more-post{
+	color: #81a29e;
+	cursor: pointer;
+	text-align: center;
+	margin-bottom: 5px;
 }
 
 .timestamp {
