@@ -10,7 +10,7 @@ class EmbersController < ApplicationController
 		else
 			@post = Post.new
 		end
-		@posts = @hero.posts.paginate(page: params[:page], :per_page => 15)
+		@posts = @hero.posts.order(created_at: :desc).paginate(page: params[:page], :per_page => 15)
 		@postings = @hero.posts.all(:order => 'RAND()', :limit => 20)
 		@images = @hero.hero_images.all(:order => 'RAND()', :limit => 20)
 		@videos = @hero.videos.all(:order => 'RAND()', :limit => 20)

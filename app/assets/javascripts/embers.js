@@ -5,7 +5,7 @@ $(document).ready(function() {
 			$(this).css('height', '102px')
 		}
 		else{
-			$(".read-more-post").eq(1).hide();
+			$(".read-more-post").eq(index).hide();
 		}
 	  console.log( $(this).height() );
 	  console.log( $(".read-more-post").get(1) );
