@@ -1,5 +1,5 @@
 $(document).ready(function() {
-	$( ".post-content p" ).each(function( index ) {
+	$( ".post-content .post-slider-wrapper" ).each(function( index ) {
 		autoHeight = $(this).css('height', 'auto').height();
 		if (autoHeight > 102){
 			$(this).css('height', '102px')
@@ -12,7 +12,7 @@ $(document).ready(function() {
 	});
 
 	$(".read-more-post").click(function(){
-	    $box = $(("#post-" + this.id) + ' p');
+	    $box = $(("#post-" + this.id) + ' .post-slider-wrapper');
 
 	    minimumHeight = 103;
 

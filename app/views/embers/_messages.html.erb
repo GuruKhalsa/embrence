@@ -8,11 +8,9 @@
 				<%=link_to "x",post_path(post.id, :msg_hero => @hero.id, :destroy_page => "hero"), :method => :delete, :class => "post-top-right", :confirm => "Are you sure you want to delete this message?"%>
 			<% end %>
 			<span class="post-content" id="post-<%=post.id%>">
-
-
-
-			
-			<%= simple_format(post.post) %>
+				<div class='post-slider-wrapper'>
+					<%= simple_format(post.post) %>
+				</div>
 			</span>
 			<div class='read-more-post' id="<%=post.id%>">Read More ▼</div>
 			<span class="timestamp"><%= time_ago_in_words(post.created_at)%> ago </span>

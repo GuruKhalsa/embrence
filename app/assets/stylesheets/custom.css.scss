@@ -54,21 +54,21 @@ a:hover, a:focus {
 }
 
 /*.btn-primary {
-	background-color: #fcab6e;
+	background-color: #fda25d;
 	border: 1px solid #fe8e39;
 	letter-spacing: 2px;
 	&:hover {
-	  background-color: #fda25d;
+	  background-color: #fcab6e;
 		border: 1px solid #fe8e39;
 	}
 }*/
 
 .btn-primary {
-	background-color: #73ab9b;
+	background-color: #028372;
 	border: 1px solid #028372;
 	letter-spacing: 2px;
 	&:hover {
-	  background-color: #028372;
+	  background-color: #73ab9b;
 		border: 1px solid #028372;
 	}
 }
@@ -319,7 +319,7 @@ input, textarea, select, .uneditable-input {
 	position: relative;
 	overflow: hidden;
 
-	p{
+	.post-slider-wrapper{
 		height: 102px;
 		overflow: hidden;
 	}
