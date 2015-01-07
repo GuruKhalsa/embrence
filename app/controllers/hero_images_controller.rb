@@ -31,9 +31,9 @@ class HeroImagesController < ApplicationController
 			@hero = Ember.find(@image.ember_id)
 			redirect_to @hero
 		else 
-	    	@user = Ember.find(@image.user_id)
-	    	redirect_to @user
-	    end
+    	@user = User.find(@image.user_id)
+    	redirect_to @user
+    end
 	end
 
 end
