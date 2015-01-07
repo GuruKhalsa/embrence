@@ -41,9 +41,9 @@ $(document).ready(function() {
 	    console.log(currentHeight);
 
 
-	    $(this).animate({
-	        marginTop: (currentHeight > 40 ? 0 : (autoHeight > 39 ? autoHeight - 40 : 0))
-	    })
+	    // $(this).animate({
+	    //     marginTop: (currentHeight > 40 ? 0 : (autoHeight > 39 ? autoHeight - 40 : 0))
+	    // })
 
 	    $(this).text() === 'Read More ▼' ? $(this).text('Minimize ▲') : $(this).text('Read More ▼');
 	});
