@@ -2,7 +2,7 @@ $(document).ready(function() {
 	$( ".post-content .post-slider-wrapper" ).each(function( index ) {
 		autoHeight = $(this).css('height', 'auto').height();
 		if (autoHeight > 102){
-			$(this).css('height', '102px')
+			$(this).css('height', '102px');
 		}
 		else{
 			$(".read-more-post").eq(index).hide();
