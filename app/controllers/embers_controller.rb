@@ -1,5 +1,5 @@
 class EmbersController < ApplicationController
-	before_filter :signed_in_user, only: [:new, :create, :edit, :update, :delete]
+	before_filter :signed_in_user, only: [:new, :create, :edit, :update, :destroy]
 	before_filter :setup_negative_captcha, :only => [:show]
 
 	def show

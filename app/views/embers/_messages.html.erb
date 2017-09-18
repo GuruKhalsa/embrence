@@ -34,7 +34,6 @@
 	<div id="share_form">
 
 		<%= form_tag posts_path do %>
-		  <%# The `negative_captcha` call gives us the honeypots, spinners and whatnot %>
 		  <%= raw negative_captcha(@captcha) %>
 		  	<% if signed_in? == false %>
 		    	<%= negative_text_field_tag(@captcha, :name, :placeholder => 'Your Name') %>

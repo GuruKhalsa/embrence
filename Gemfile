@@ -5,7 +5,7 @@ gem 'bootstrap-sass', '~> 3.0.3.0'
 gem 'faker', '~> 1.2.0'
 gem 'will_paginate', '~> 3.0.5'
 gem 'bootstrap-will_paginate', '~> 0.0.10'
-#gem "rmagick", '~> 2.13.2', :require => 'RMagick'
+#gem 'rmagick', '~> 2.13.2', :require => 'RMagick'
 gem 'mini_magick', :require => 'mini_magick'
 gem 'carrierwave', '~> 0.9.0'
 gem 'randumb', '~> 0.4.1'
@@ -13,7 +13,7 @@ gem 'fancybox-rails', '~> 0.2.1'
 gem 'carrierwave-video', '~> 0.5.4'
 gem 'carrierwave-video-thumbnailer', '~> 0.1.4'
 gem 'mysql2', '~> 0.3.14'
-gem "fog", '~> 1.19.0'
+gem 'fog', '~> 1.19.0'
 gem 'unf', '~> 0.1.3'
 gem 'unicorn', '~> 4.8.0'
 
@@ -96,7 +96,7 @@ gem 'capistrano-rails', '~> 1.1.0'
 gem 'capistrano-bundler'
 
 # if you are using RBENV
-gem 'capistrano-rbenv', "~> 2.0" 
+gem 'capistrano-rbenv', '~> 2.0'
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]

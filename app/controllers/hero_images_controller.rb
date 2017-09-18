@@ -1,18 +1,28 @@
 class HeroImagesController < ApplicationController
-	before_filter :signed_in_user
+	before_filter :signed_in_user, only: [:edit, :update, :destroy]
 
 	def new
-		@image = current_user.hero_images.build
+		if current_user
+			@image = current_user.hero_images.build
+		else
+			@image = HeroImage.new
+		end
 		@hero = Ember.find(params[:image_hero])
 	end
 
 	def create
 		@hero = Ember.find(params[:hero_image][:ember_id])
-		@image = current_user.hero_images.build(params[:hero_image])
+		if current_user
+			@image = current_user.hero_images.build(params[:hero_image])
+		else
+			@image = HeroImage.new(params[:hero_image])
+		end
+
 		if @image.save
-    		flash[:success] = "Image created!"
+    	flash[:success] = "Image created!"
 			redirect_to @hero
 		else
+			flash[:alert] = "Image could not be uploaded"
 			redirect_to @hero
 		end
 	end

@@ -49,6 +49,18 @@ a {
 	color: #028372;
 }
 
+.alert-notice, .alert-error{
+	background: #f8c196;
+	font-size: 20px;	
+	padding: 10px 20px;
+}
+
+.alert-success{
+	background: #028372;
+	font-size: 20px;	
+	padding: 10px 20px;
+}
+
 a:hover, a:focus {
 	text-decoration: none;
 }

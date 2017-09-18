@@ -14,7 +14,7 @@ class PostsController < ApplicationController
     	flash[:success] = "Message created!"
 			redirect_to @hero
 		else
-			flash[:notice] = @captcha.error if @captcha.error
+			flash[:alert] = @captcha.error if @captcha.error
 			redirect_to @hero
 		end
 	end

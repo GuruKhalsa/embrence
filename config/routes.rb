@@ -8,7 +8,6 @@ HerosWall4::Application.routes.draw do
   resources :embers
   resources :hero_images
   resources :videos
-  resources :sessions, only: [:new, :create, :destroy]
   resources :posts, only: [:create, :destroy]
 
 
@@ -18,7 +17,8 @@ HerosWall4::Application.routes.draw do
   get '/about',  to: 'static_pages#about'
 
   get '/signup',  to: 'users#new'
-  get '/signin',  to: 'sessions#new'
+  get '/signin',  to: 'sessions#new', as: :new_signin
+  post '/signin',  to: 'sessions#create', as: :signin
   match '/signout', to: 'sessions#destroy', via: :delete
 
   mount Sidekiq::Web, at: '/sidekiq'
